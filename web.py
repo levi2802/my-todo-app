@@ -2,7 +2,8 @@ import streamlit as st
 import functions
 
 todos = functions.get_todos()
-
+# Helps to adjust the screen size to fit the device.
+st.set_page_config(layout='wide')
 
 def add_todo():
     todo = st.session_state['new_todo'] + '\n'
@@ -12,7 +13,9 @@ def add_todo():
 
 st.title("My ToDo App")
 st.subheader("This is my todo app")
-st.write("This app is to increase my productivity")
+# Default unsafe_allow_html is set to false, so html tags will not be activated.
+st.write("This app is to increase my <b>productivity</b>", unsafe_allow_html=True)
+
 
 for index, todo in enumerate(todos):
     checkbox = st.checkbox(todo, key=todo)
